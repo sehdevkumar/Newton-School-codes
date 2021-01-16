@@ -1,0 +1,38 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+		int cases = sc.nextInt();
+		while(cases-->0){
+		int len = sc.nextInt();
+		int arr[] = new int[len];
+		
+
+		// input all values into the array
+		for(int i=0;i<len;i++){
+			arr[i] = sc.nextInt();
+		}
+
+		// Try with while loop
+		int k = 0;
+		String s = "";
+		while(k<len && k*2+1<len){
+			
+			int fre = arr[2*k];	
+			int val = arr[2*k+1];
+			
+			for(int i=0;i<fre;i++){
+				System.out.print(Integer.toString(val)+" ");
+			}
+		 k++;
+		}
+
+	   System.out.println("");
+		}
+	
+	}
+}
