@@ -1,0 +1,54 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+		Scanner sc = new Scanner(System.in);
+		int size = sc.nextInt();
+
+		long arr[] = new long[size];
+
+		for(int i=0;i<size;i++){
+			arr[i] = sc.nextLong();
+		}
+
+		  int len = arr.length;
+		  
+		  long leftMax[]  = new long[len];
+		  long rigthMax[] = new long[len];
+
+		  leftMax[0] = arr[0];
+		  rigthMax[len-1] = arr[len-1];
+		  
+		  for(int i=1;i<len;i++){
+			  long max  = Math.max(leftMax[i-1],arr[i]);
+			  leftMax[i] = max;
+		  }
+		  
+		  for(int i=len-2;i>=0;i--){
+			  long max  = Math.max(rigthMax[i+1],arr[i]);
+			  rigthMax[i] = max;
+		  }
+		  
+		//   for(int i:leftMax){
+		// 	  System.out.print(i+" ");
+		//   }
+		//   System.out.println("");
+		  
+		//   for(int i:rigthMax){
+		// 	  System.out.print(i+" ");
+		//   }
+		 
+		 // Calculate the Valume of water between the blocks 
+		 long waterVolume = 0;
+		 for(int i=1;i<len-1;i++){
+			 waterVolume+= Math.min(leftMax[i],rigthMax[i])-arr[i];
+		 }
+		 
+		 System.out.println(waterVolume);
+		
+	}
+}
