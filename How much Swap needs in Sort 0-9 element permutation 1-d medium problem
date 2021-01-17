@@ -1,0 +1,45 @@
+
+class SwapIt{
+	
+	
+	public static void main(String[] args){
+		
+		int []arr = {5,3,2,4,1};
+		
+		int len = arr.length;
+		
+		boolean terminator = true;
+		int count = 0;
+		while(terminator){
+			
+			
+			for(int i=0;i<len;i++ ){
+				
+				if(count>1 || i==len-1){
+					terminator = false;
+					break;
+				}
+				int index = arr[i]%(len+1)-1;
+				if(i!=index){
+					
+					int temp = arr[index];
+					arr[index] = arr[i];
+					arr[i] = temp;
+					count++;
+					continue;
+				}
+				else if(i==index){
+					continue;
+				}
+			}
+		}
+		
+		System.out.print("Swap Counts "+count);
+		
+		
+	}
+	
+	
+	
+}
+
