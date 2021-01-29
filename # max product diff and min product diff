@@ -1,0 +1,24 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		int prod_with_ids[] = new int[num];
+		
+		for (int i=0;i<num;i++ ){
+		    prod_with_ids[i] = sc.nextInt();
+		} 
+		
+       // sort the arrays 		
+		Arrays.sort(prod_with_ids);
+	    
+	    int big = prod_with_ids[num-1];
+	    int count = 0;
+	    for(int i=0;i<num-1;i++){
+	        count+=(big-prod_with_ids[i]);
+	    }
+	    
+	    System.out.println(count);
+	}
+}
