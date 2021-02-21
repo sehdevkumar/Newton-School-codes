@@ -1,0 +1,87 @@
+import java.util.*;
+class DeleteKthNode{
+	
+	// Initialize of the Head Node 
+	public static Node head=null;
+	public static void main(String args[]){
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the Number  element into the Linked List");
+		int n = sc.nextInt();
+		System.out.println("Enter the elements");
+		while(n-->0){
+			
+			int ele = sc.nextInt();
+			insert(ele);
+		
+		}
+		System.out.println("Print the Linked List  the Delete Kth Node");
+		display(head);
+		System.out.println();
+		delKthNode(head,2);
+	}
+	
+	public static void insert(int ele){
+		head = createList(head,ele);
+	}
+	
+	public static void display(Node head){
+		Node temp = head;
+		while(temp!=null){
+			System.out.print(temp.data+"->");
+			temp = temp.next;
+		}
+		System.out.print("null");
+	}
+	
+	public static Node createList(Node head,int ele){
+		
+		Node newNode = new Node(ele);
+		Node temp = head;
+		if(head==null){
+			head = newNode;
+		}else{
+			
+			temp.next = createList(head.next,ele);
+			
+		}
+		
+		return head;
+	}
+	
+	public static void delKthNode(Node head,int k){
+		if(head==null || head.next==null){
+			return;
+		}
+		Node cur  = head;
+		Node next = null;
+		int count = k;
+		while(cur!=null){
+			// 1 2 3 4 5 6 
+			count--;
+			if(count==1){
+				cur.next = cur.next.next;
+				break;
+			}
+			
+			cur = cur.next;
+			
+		}
+		head =cur;
+		display(head);
+		System.out.println();
+		delKthNode(head,k);
+		
+	}
+}
+
+// Node class 
+class Node {
+
+	int data;
+	Node next;
+	Node(int data){
+		this.data = data;
+	}
+	
+}
